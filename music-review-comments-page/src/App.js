@@ -10,8 +10,6 @@ import GalleryItem from './components/GalleryItem';
 import InputComment from './components/InputComments'
 
 function App() {
-    //const { id } = useParams()
-    const id = 1;
     const [ allCommentData, setAllCommentData ] = useState([])
 
     useEffect(() => {
@@ -23,7 +21,7 @@ function App() {
             setAllCommentData(resData)
         }
         fetchData()
-    }, [id])
+    },[])
     
     const renderComments = allCommentData.map((comment,i)=>{
       return (
@@ -36,6 +34,7 @@ function App() {
         <h1>Navbar</h1>
         <InputComment/>
         {renderComments}
+
       </div>
     )
 

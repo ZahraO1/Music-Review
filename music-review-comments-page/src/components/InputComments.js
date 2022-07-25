@@ -1,12 +1,8 @@
-import { useState, useEffect } from "react"
-import { useParams } from "react-router"
+import { useState } from "react"
 
 function CommentForm() {
 
-	//const history = useNavigate()
-
-    const { commentId } = useParams()
-
+    //set initial state for comment
     const [comment, setComment] = useState({
 		song_name: '',
 		rating: '',
@@ -15,6 +11,7 @@ function CommentForm() {
 		date: ''
 	})
 
+    //when the form is submitted, the data is converted to JSON and added to the database
     async function handleSubmit(e) {
 		e.preventDefault()
 
@@ -25,11 +22,20 @@ function CommentForm() {
 			},
 			body: JSON.stringify(comment)
 		})
-
+        //when the new comment is created, the page reloads to the comments page
 		window.location ='/comments'
 	}
+
+    const simpleStyle = {
+        'width': '25vw',
+        'height': '20vh',
+        'textAlign': 'center',
+        'border': '1px solid black',
+        'margin': 'auto'
+    }
+
 	return (
-		<main>
+		<main style={simpleStyle}>
 			<h1>New Review</h1>
 			<form onSubmit={handleSubmit}>
 				<div className="form-group">
